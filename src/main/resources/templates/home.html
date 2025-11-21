@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragmentos :: head(title='Home - NEXO')}"></head>
+<body class="home-page">
+    <div th:replace="~{fragmentos :: header(title='Home - NEXO')}"></div>
+    <main class="container home-wrapper d-flex flex-column align-items-center justify-content-center">
+        <div class="home-logo-wrap text-center mb-4 mt-4">
+            <img th:src="@{/images/NEXO.png}" alt="NEXO" class="home-logo" onerror="this.style.display='none'" />
+        </div>
+        <h1 class="home-title mb-2" th:text="#{label.bem_vindo}">Bem-vindo ao NEXO</h1>
+        <p class="home-subtitle mb-4" th:text="#{label.preencha_formulario}">Escolha um módulo para começar</p>
+        <div class="row w-100 justify-content-center g-4 mb-4">
+            <div class="col-12 col-md-6 col-lg-3 d-flex justify-content-center">
+                <a class="home-card card-user" th:href="@{/usuario/lista}">
+                    <i class="bi bi-people-fill"></i>
+                    <span th:text="#{label.lista_usuarios}">Usuários</span>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 d-flex justify-content-center">
+                <a class="home-card card-pred" th:href="@{/descricao-clientes/novo}">
+                    <i class="bi bi-bar-chart-line-fill"></i>
+                    <span th:text="#{menu.nova_descricao}">Predições</span>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 d-flex justify-content-center">
+                <a class="home-card card-historico" th:href="@{/descricao-clientes/historico}">
+                    <i class="bi bi-clock-history"></i>
+                    <span th:text="#{menu.historico}">Histórico Formulários</span>
+                </a>
+            </div>
+        </div>
+        <div class="home-tip text-center mt-3">
+            <i class="bi bi-lightbulb-fill me-2"></i>
+            <span th:text="#{label.preencha_formulario}">Você pode cadastrar, editar, visualizar ou excluir registros em cada módulo.</span>
+        </div>
+
+        <!-- Botão de notificações visível apenas para ADMIN -->
+        <div class="text-center mt-4" sec:authorize="hasRole('ADMIN')">
+            <a class="btn btn-outline-nexo" th:href="@{/notificacoes}">
+                <i class="bi bi-bell-fill me-1"></i> Ver histórico de notificações
+            </a>
+        </div>
+    </main>
+</body>
+</html>
