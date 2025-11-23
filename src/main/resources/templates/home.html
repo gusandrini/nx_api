@@ -33,13 +33,6 @@
             <i class="bi bi-lightbulb-fill me-2"></i>
             <span th:text="#{label.preencha_formulario}">Você pode cadastrar, editar, visualizar ou excluir registros em cada módulo.</span>
         </div>
-
-        <!-- Botão de notificações visível apenas para ADMIN -->
-        <div class="text-center mt-4" sec:authorize="hasRole('ADMIN')">
-            <a class="btn btn-outline-nexo" th:href="@{/notificacoes}">
-                <i class="bi bi-bell-fill me-1"></i> Ver histórico de notificações
-            </a>
-        </div>
     </main>
 </body>
 </html>
